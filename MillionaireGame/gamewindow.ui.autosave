@@ -76,7 +76,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>50/50</string>
     </property>
    </widget>
    <widget class="QPushButton" name="audienceBtn">
@@ -89,7 +89,9 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Помощь
+зала
+</string>
     </property>
    </widget>
    <widget class="QPushButton" name="callBtn">
@@ -115,7 +117,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Забрать деньги</string>
     </property>
    </widget>
    <widget class="QPushButton" name="backToMenuBtn">
@@ -128,7 +130,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Назад</string>
     </property>
    </widget>
    <widget class="QListWidget" name="prizeList">

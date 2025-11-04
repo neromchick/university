@@ -35,10 +35,11 @@ public:
     QPushButton *callBtn;
     QPushButton *takeMoneyBtn;
     QPushButton *backToMenuBtn;
-    QListWidget *listWidget;
+    QListWidget *prizeList;
     QFrame *frame;
     QLabel *questionLbl;
     QLabel *valueLevelLbl;
+    QLabel *countdownLbl;
     QLabel *label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -77,24 +78,45 @@ public:
         backToMenuBtn = new QPushButton(centralwidget);
         backToMenuBtn->setObjectName("backToMenuBtn");
         backToMenuBtn->setGeometry(QRect(20, 50, 90, 29));
-        listWidget = new QListWidget(centralwidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        listWidget->setObjectName("listWidget");
-        listWidget->setGeometry(QRect(620, 120, 151, 381));
+        prizeList = new QListWidget(centralwidget);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        new QListWidgetItem(prizeList);
+        prizeList->setObjectName("prizeList");
+        prizeList->setGeometry(QRect(660, 30, 131, 511));
+        prizeList->setStyleSheet(QString::fromUtf8("QListWidget {\n"
+"        background-color: #111;\n"
+"        color: white;\n"
+"        font: bold 16px \"Segoe UI\";\n"
+"        border: none;\n"
+"    }\n"
+"    QListWidget::item {\n"
+"        padding: 4px;\n"
+"        border-bottom: 1px solid #333;\n"
+"    }\n"
+"    QListWidget::item:selected {\n"
+"        background-color: #ff9800;\n"
+"        color: black;\n"
+"    }\n"
+"QListWidget {\n"
+"        border: none;\n"
+"        padding: 0px;\n"
+"        margin: 0px;\n"
+"        spacing: 0px;\n"
+"    }\n"
+""));
         frame = new QFrame(centralwidget);
         frame->setObjectName("frame");
         frame->setGeometry(QRect(20, 120, 531, 201));
@@ -112,6 +134,9 @@ public:
         valueLevelLbl->setGeometry(QRect(0, 0, 531, 41));
         valueLevelLbl->setFont(font);
         valueLevelLbl->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        countdownLbl = new QLabel(frame);
+        countdownLbl->setObjectName("countdownLbl");
+        countdownLbl->setGeometry(QRect(410, 10, 63, 20));
         label = new QLabel(centralwidget);
         label->setObjectName("label");
         label->setGeometry(QRect(30, 350, 41, 51));
@@ -145,42 +170,43 @@ public:
         takeMoneyBtn->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
         backToMenuBtn->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
 
-        const bool __sortingEnabled = listWidget->isSortingEnabled();
-        listWidget->setSortingEnabled(false);
-        QListWidgetItem *___qlistwidgetitem = listWidget->item(0);
+        const bool __sortingEnabled = prizeList->isSortingEnabled();
+        prizeList->setSortingEnabled(false);
+        QListWidgetItem *___qlistwidgetitem = prizeList->item(0);
         ___qlistwidgetitem->setText(QCoreApplication::translate("gamewindow", "1000000", nullptr));
-        QListWidgetItem *___qlistwidgetitem1 = listWidget->item(1);
+        QListWidgetItem *___qlistwidgetitem1 = prizeList->item(1);
         ___qlistwidgetitem1->setText(QCoreApplication::translate("gamewindow", "700000", nullptr));
-        QListWidgetItem *___qlistwidgetitem2 = listWidget->item(2);
+        QListWidgetItem *___qlistwidgetitem2 = prizeList->item(2);
         ___qlistwidgetitem2->setText(QCoreApplication::translate("gamewindow", "400000", nullptr));
-        QListWidgetItem *___qlistwidgetitem3 = listWidget->item(3);
+        QListWidgetItem *___qlistwidgetitem3 = prizeList->item(3);
         ___qlistwidgetitem3->setText(QCoreApplication::translate("gamewindow", "200000", nullptr));
-        QListWidgetItem *___qlistwidgetitem4 = listWidget->item(4);
+        QListWidgetItem *___qlistwidgetitem4 = prizeList->item(4);
         ___qlistwidgetitem4->setText(QCoreApplication::translate("gamewindow", "100000", nullptr));
-        QListWidgetItem *___qlistwidgetitem5 = listWidget->item(5);
+        QListWidgetItem *___qlistwidgetitem5 = prizeList->item(5);
         ___qlistwidgetitem5->setText(QCoreApplication::translate("gamewindow", "50000", nullptr));
-        QListWidgetItem *___qlistwidgetitem6 = listWidget->item(6);
+        QListWidgetItem *___qlistwidgetitem6 = prizeList->item(6);
         ___qlistwidgetitem6->setText(QCoreApplication::translate("gamewindow", "25000", nullptr));
-        QListWidgetItem *___qlistwidgetitem7 = listWidget->item(7);
+        QListWidgetItem *___qlistwidgetitem7 = prizeList->item(7);
         ___qlistwidgetitem7->setText(QCoreApplication::translate("gamewindow", "15000", nullptr));
-        QListWidgetItem *___qlistwidgetitem8 = listWidget->item(8);
+        QListWidgetItem *___qlistwidgetitem8 = prizeList->item(8);
         ___qlistwidgetitem8->setText(QCoreApplication::translate("gamewindow", "10000", nullptr));
-        QListWidgetItem *___qlistwidgetitem9 = listWidget->item(9);
+        QListWidgetItem *___qlistwidgetitem9 = prizeList->item(9);
         ___qlistwidgetitem9->setText(QCoreApplication::translate("gamewindow", "5000", nullptr));
-        QListWidgetItem *___qlistwidgetitem10 = listWidget->item(10);
+        QListWidgetItem *___qlistwidgetitem10 = prizeList->item(10);
         ___qlistwidgetitem10->setText(QCoreApplication::translate("gamewindow", "2000", nullptr));
-        QListWidgetItem *___qlistwidgetitem11 = listWidget->item(11);
+        QListWidgetItem *___qlistwidgetitem11 = prizeList->item(11);
         ___qlistwidgetitem11->setText(QCoreApplication::translate("gamewindow", "1000", nullptr));
-        QListWidgetItem *___qlistwidgetitem12 = listWidget->item(12);
+        QListWidgetItem *___qlistwidgetitem12 = prizeList->item(12);
         ___qlistwidgetitem12->setText(QCoreApplication::translate("gamewindow", "500", nullptr));
-        QListWidgetItem *___qlistwidgetitem13 = listWidget->item(13);
+        QListWidgetItem *___qlistwidgetitem13 = prizeList->item(13);
         ___qlistwidgetitem13->setText(QCoreApplication::translate("gamewindow", "200", nullptr));
-        QListWidgetItem *___qlistwidgetitem14 = listWidget->item(14);
-        ___qlistwidgetitem14->setText(QCoreApplication::translate("gamewindow", "1. 100", nullptr));
-        listWidget->setSortingEnabled(__sortingEnabled);
+        QListWidgetItem *___qlistwidgetitem14 = prizeList->item(14);
+        ___qlistwidgetitem14->setText(QCoreApplication::translate("gamewindow", "100", nullptr));
+        prizeList->setSortingEnabled(__sortingEnabled);
 
         questionLbl->setText(QCoreApplication::translate("gamewindow", "TextLabel", nullptr));
         valueLevelLbl->setText(QCoreApplication::translate("gamewindow", "\320\222\320\276\320\277\321\200\320\276\321\201 1/15", nullptr));
+        countdownLbl->setText(QCoreApplication::translate("gamewindow", "TextLabel", nullptr));
         label->setText(QCoreApplication::translate("gamewindow", "A", nullptr));
     } // retranslateUi
 
