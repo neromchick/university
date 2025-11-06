@@ -14,11 +14,15 @@ class startwindow : public QMainWindow
 public:
     explicit startwindow(QWidget *parent = nullptr);
     ~startwindow();
+    void recieveBalance(const QString& value);
+    QString balance = "-100";
 
 private slots:
     void on_startBtn_clicked();
-
     void on_exitBtn_clicked();
+
+public slots:
+
 
 private:
     Ui::startwindow *ui;

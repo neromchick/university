@@ -40,7 +40,6 @@ public:
     QLabel *questionLbl;
     QLabel *valueLevelLbl;
     QLabel *countdownLbl;
-    QLabel *label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -53,10 +52,31 @@ public:
         centralwidget->setObjectName("centralwidget");
         answerBtn1 = new QPushButton(centralwidget);
         answerBtn1->setObjectName("answerBtn1");
-        answerBtn1->setGeometry(QRect(20, 340, 231, 81));
+        answerBtn1->setGeometry(QRect(20, 350, 231, 81));
         answerBtn2 = new QPushButton(centralwidget);
         answerBtn2->setObjectName("answerBtn2");
         answerBtn2->setGeometry(QRect(320, 340, 231, 81));
+        answerBtn2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"        background-color: #1e1e1e;\n"
+"        color: white;\n"
+"        font: bold 16px \"Segoe UI\";\n"
+"        border: 2px solid #444;\n"
+"        border-radius: 8px;\n"
+"        padding: 10px;\n"
+"        text-align: center;\n"
+"    }\n"
+"    QPushButton:hover {\n"
+"        background-color: #2e2e2e;\n"
+"        border-color: #888;\n"
+"    }\n"
+"    QPushButton:pressed {\n"
+"        background-color: #0078d7;\n"
+"        color: white;\n"
+"        border-color: #005bb5;\n"
+"    }\n"
+""));
+        answerBtn2->setCheckable(false);
+        answerBtn2->setChecked(false);
         answerBtn3 = new QPushButton(centralwidget);
         answerBtn3->setObjectName("answerBtn3");
         answerBtn3->setGeometry(QRect(20, 450, 231, 81));
@@ -119,30 +139,29 @@ public:
 ""));
         frame = new QFrame(centralwidget);
         frame->setObjectName("frame");
-        frame->setGeometry(QRect(20, 120, 531, 201));
+        frame->setGeometry(QRect(20, 120, 621, 201));
         frame->setFrameShape(QFrame::Shape::StyledPanel);
         frame->setFrameShadow(QFrame::Shadow::Raised);
         questionLbl = new QLabel(frame);
         questionLbl->setObjectName("questionLbl");
-        questionLbl->setGeometry(QRect(0, 70, 531, 131));
+        questionLbl->setGeometry(QRect(10, 70, 601, 131));
         QFont font;
         font.setPointSize(14);
         questionLbl->setFont(font);
+        questionLbl->setFrameShape(QFrame::Shape::NoFrame);
+        questionLbl->setFrameShadow(QFrame::Shadow::Plain);
+        questionLbl->setScaledContents(false);
         questionLbl->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        questionLbl->setWordWrap(true);
         valueLevelLbl = new QLabel(frame);
         valueLevelLbl->setObjectName("valueLevelLbl");
-        valueLevelLbl->setGeometry(QRect(0, 0, 531, 41));
+        valueLevelLbl->setGeometry(QRect(0, 0, 621, 61));
         valueLevelLbl->setFont(font);
         valueLevelLbl->setAlignment(Qt::AlignmentFlag::AlignCenter);
         countdownLbl = new QLabel(frame);
         countdownLbl->setObjectName("countdownLbl");
-        countdownLbl->setGeometry(QRect(410, 10, 63, 20));
-        label = new QLabel(centralwidget);
-        label->setObjectName("label");
-        label->setGeometry(QRect(30, 350, 41, 51));
-        QFont font1;
-        font1.setPointSize(28);
-        label->setFont(font1);
+        countdownLbl->setGeometry(QRect(510, 0, 101, 41));
+        countdownLbl->setFont(font);
         gamewindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(gamewindow);
         menubar->setObjectName("menubar");
@@ -161,14 +180,16 @@ public:
     {
         gamewindow->setWindowTitle(QCoreApplication::translate("gamewindow", "MainWindow", nullptr));
         answerBtn1->setText(QCoreApplication::translate("gamewindow", "\320\236\320\242\320\222\320\225\320\242 1", nullptr));
-        answerBtn2->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
+        answerBtn2->setText(QCoreApplication::translate("gamewindow", "\320\262\320\260\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\274\320\262\321\213\321\217\320\274\321\217\321\207\320\274", nullptr));
         answerBtn3->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
         answerBtn4->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
-        fiftyFiftyBtn->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
-        audienceBtn->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
+        fiftyFiftyBtn->setText(QCoreApplication::translate("gamewindow", "50/50", nullptr));
+        audienceBtn->setText(QCoreApplication::translate("gamewindow", "\320\237\320\276\320\274\320\276\321\211\321\214\n"
+"\320\267\320\260\320\273\320\260\n"
+"", nullptr));
         callBtn->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
-        takeMoneyBtn->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
-        backToMenuBtn->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
+        takeMoneyBtn->setText(QCoreApplication::translate("gamewindow", "\320\227\320\260\320\261\321\200\320\260\321\202\321\214 \320\264\320\265\320\275\321\214\320\263\320\270", nullptr));
+        backToMenuBtn->setText(QCoreApplication::translate("gamewindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
 
         const bool __sortingEnabled = prizeList->isSortingEnabled();
         prizeList->setSortingEnabled(false);
@@ -204,10 +225,9 @@ public:
         ___qlistwidgetitem14->setText(QCoreApplication::translate("gamewindow", "100", nullptr));
         prizeList->setSortingEnabled(__sortingEnabled);
 
-        questionLbl->setText(QCoreApplication::translate("gamewindow", "TextLabel", nullptr));
+        questionLbl->setText(QCoreApplication::translate("gamewindow", "\320\255\321\202\320\270 \320\274\320\265\321\202\320\276\320\264\321\213 \320\277\321\200\320\270\320\263\320\276\320\264\321\217\321\202\321\201\321\217 \320\262 \320\261\321\203\320\264\321\203\321\211\320\265\320\274. \320\222\321\213 \321\201\320\274\320\276\320\266\320\265\321\202\320\265 \320\270\321\205 \320\270\321\201\320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\321\214 \320\275\320\260 \321\200\321\217\320\264\321\203 \320\270 \320\262 \320\277\320\265\321\200\320\265\320\274\320\265\321\210\320\272\321\203 \321\201 \320\276\321\201\321\202\320\260\320\273\321\214\320\275\321\213\320\274\320\270 \320\274\320\265\321\202\320\276\320\264\320\260\320\274\320\270", nullptr));
         valueLevelLbl->setText(QCoreApplication::translate("gamewindow", "\320\222\320\276\320\277\321\200\320\276\321\201 1/15", nullptr));
         countdownLbl->setText(QCoreApplication::translate("gamewindow", "TextLabel", nullptr));
-        label->setText(QCoreApplication::translate("gamewindow", "A", nullptr));
     } // retranslateUi
 
 };

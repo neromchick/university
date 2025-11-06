@@ -39,14 +39,17 @@ template <> constexpr inline auto gamewindow::qt_create_metaobjectdata<qt_meta_t
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "gamewindow",
-        "on_answerBtn_clicked",
+        "sendBalance",
         "",
+        "value",
+        "on_answerBtn_clicked",
         "on_backToMenuBtn_clicked",
         "animateBlink",
         "QPushButton*",
         "button",
         "times",
         "interval",
+        "finalStyle",
         "std::function<void()>",
         "onFinished",
         "showAnswerResult",
@@ -55,32 +58,59 @@ template <> constexpr inline auto gamewindow::qt_create_metaobjectdata<qt_meta_t
         "resetStylesAnswerBtn",
         "proceedToNextLevel",
         "loadNextQuestion",
-        "initPrizeList"
+        "initPrizeList",
+        "on_takeMoneyBtn_clicked",
+        "baseAnswerStyle",
+        "correctAnswerStyle",
+        "wrongAnswerStyle",
+        "blinkAnswerStyle",
+        "answerStyle",
+        "bgColor",
+        "textColor"
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Signal 'sendBalance'
+        QtMocHelpers::SignalData<void(const QString)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 3 },
+        }}),
         // Slot 'on_answerBtn_clicked'
-        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_backToMenuBtn_clicked'
-        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'animateBlink'
-        QtMocHelpers::SlotData<void(QPushButton *, int, int, std::function<void()>)>(4, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 5, 6 }, { QMetaType::Int, 7 }, { QMetaType::Int, 8 }, { 0x80000000 | 9, 10 },
+        QtMocHelpers::SlotData<void(QPushButton *, int, int, const QString &, std::function<void()>)>(6, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 7, 8 }, { QMetaType::Int, 9 }, { QMetaType::Int, 10 }, { QMetaType::QString, 11 },
+            { 0x80000000 | 12, 13 },
         }}),
         // Slot 'showAnswerResult'
-        QtMocHelpers::SlotData<void(QPushButton *)>(11, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 5, 12 },
+        QtMocHelpers::SlotData<void(QPushButton *)>(14, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 7, 15 },
         }}),
         // Slot 'startCountdown'
-        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'resetStylesAnswerBtn'
-        QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'proceedToNextLevel'
-        QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'loadNextQuestion'
         QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'initPrizeList'
+        // Slot 'resetStylesAnswerBtn'
         QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'proceedToNextLevel'
+        QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'loadNextQuestion'
+        QtMocHelpers::SlotData<void()>(19, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'initPrizeList'
+        QtMocHelpers::SlotData<void()>(20, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_takeMoneyBtn_clicked'
+        QtMocHelpers::SlotData<void()>(21, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'baseAnswerStyle'
+        QtMocHelpers::SlotData<QString() const>(22, 2, QMC::AccessPrivate, QMetaType::QString),
+        // Slot 'correctAnswerStyle'
+        QtMocHelpers::SlotData<QString() const>(23, 2, QMC::AccessPrivate, QMetaType::QString),
+        // Slot 'wrongAnswerStyle'
+        QtMocHelpers::SlotData<QString() const>(24, 2, QMC::AccessPrivate, QMetaType::QString),
+        // Slot 'blinkAnswerStyle'
+        QtMocHelpers::SlotData<QString() const>(25, 2, QMC::AccessPrivate, QMetaType::QString),
+        // Slot 'answerStyle'
+        QtMocHelpers::SlotData<QString(const QString &, const QString &) const>(26, 2, QMC::AccessPrivate, QMetaType::QString, {{
+            { QMetaType::QString, 27 }, { QMetaType::QString, 28 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -104,28 +134,32 @@ void gamewindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<gamewindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->on_answerBtn_clicked(); break;
-        case 1: _t->on_backToMenuBtn_clicked(); break;
-        case 2: _t->animateBlink((*reinterpret_cast< std::add_pointer_t<QPushButton*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<std::function<void()>>>(_a[4]))); break;
-        case 3: _t->showAnswerResult((*reinterpret_cast< std::add_pointer_t<QPushButton*>>(_a[1]))); break;
-        case 4: _t->startCountdown(); break;
-        case 5: _t->resetStylesAnswerBtn(); break;
-        case 6: _t->proceedToNextLevel(); break;
-        case 7: _t->loadNextQuestion(); break;
-        case 8: _t->initPrizeList(); break;
+        case 0: _t->sendBalance((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 1: _t->on_answerBtn_clicked(); break;
+        case 2: _t->on_backToMenuBtn_clicked(); break;
+        case 3: _t->animateBlink((*reinterpret_cast< std::add_pointer_t<QPushButton*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<std::function<void()>>>(_a[5]))); break;
+        case 5: _t->startCountdown(); break;
+        case 6: _t->resetStylesAnswerBtn(); break;
+        case 7: _t->proceedToNextLevel(); break;
+        case 8: _t->loadNextQuestion(); break;
+        case 9: _t->initPrizeList(); break;
+        case 10: _t->on_takeMoneyBtn_clicked(); break;
+        case 11: { QString _r = _t->baseAnswerStyle();
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+        case 12: { QString _r = _t->correctAnswerStyle();
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+        case 13: { QString _r = _t->wrongAnswerStyle();
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+        case 14: { QString _r = _t->blinkAnswerStyle();
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
+        case 15: { QString _r = _t->answerStyle((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])));
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 2:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QPushButton* >(); break;
-            }
-            break;
         case 3:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
@@ -133,7 +167,18 @@ void gamewindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QPushButton* >(); break;
             }
             break;
+        case 4:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QPushButton* >(); break;
+            }
+            break;
         }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (gamewindow::*)(const QString )>(_a, &gamewindow::sendBalance, 0))
+            return;
     }
 }
 
@@ -156,15 +201,21 @@ int gamewindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 16;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 16;
     }
     return _id;
+}
+
+// SIGNAL 0
+void gamewindow::sendBalance(const QString _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
 }
 QT_WARNING_POP

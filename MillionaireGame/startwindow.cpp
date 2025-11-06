@@ -8,6 +8,7 @@ startwindow::startwindow(QWidget *parent)
     , ui(new Ui::startwindow)
 {
     ui->setupUi(this);
+    ui->balanceLbl->setText(balance);
 }
 
 startwindow::~startwindow()
@@ -29,3 +30,7 @@ void startwindow::on_exitBtn_clicked()
     QApplication::quit();
 }
 
+void startwindow::recieveBalance(const QString& value)
+{
+    ui->balanceLbl->setText(value);
+}

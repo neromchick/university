@@ -15,6 +15,10 @@ gamewindow::gamewindow(QWidget *parent)
     for (QPushButton* btn : answerButtons)
         connect(btn, &QPushButton::clicked, this, &gamewindow::on_answerBtn_clicked);
 
+    resetStylesAnswerBtn();
+
+    connect(this, &gamewindow::sendBalance,new startwindow, &startwindow::recieveBalance);
+
     startCountdown();
     //ui->prizeList->setCurrentRow(14);
     initPrizeList();
@@ -67,56 +71,72 @@ void gamewindow::on_answerBtn_clicked()
     if (blockClicks) return;
     blockClicks = true;
 
-    if (countdownTimer) {
-        countdownTimer->stop(); //останавливаем таймер
-    }
+    if (countdownTimer)
+        countdownTimer->stop();
 
     resetStylesAnswerBtn();
     QPushButton *clickedButton = qobject_cast<QPushButton*>(sender());
-
-    animateBlink(clickedButton, 4, 150, [this, clickedButton]() {
-        showAnswerResult(clickedButton);
-    });
-}
-
-void gamewindow::animateBlink(QPushButton* button, int times, int interval, std::function<void()> onFinished)
-{
-    for (int i = 0; i < times; ++i) {
-        int onTime = i * 2 * interval;
-        int offTime = onTime + interval;
-
-        QTimer::singleShot(onTime, this, [button]() {
-            button->setStyleSheet("background-color: yellow;");
-        });
-
-        QTimer::singleShot(offTime, this, [button]() {
-            button->setStyleSheet("");
-        });
-    }
-
-    int totalTime = times * 2 * interval;
-    QTimer::singleShot(totalTime, this, onFinished);
-}
-
-void gamewindow::showAnswerResult(QPushButton* clickedButton)
-{
     bool correct = (clickedButton == ui->answerBtn3);
 
-    if (correct) {
-        clickedButton->setStyleSheet("background-color: green;");
-    } else {
-        clickedButton->setStyleSheet("background-color: red;");
-        ui->answerBtn3->setStyleSheet("background-color: green;");
+    QString finalStyle = correct
+                             ? correctAnswerStyle()
+                             : wrongAnswerStyle();
+
+    animateBlink(clickedButton, 4, 150, finalStyle, [this, correct, clickedButton]() {
+        if (!correct)
+            ui->answerBtn3->setStyleSheet(correctAnswerStyle());
+
+        QTimer::singleShot(1000, this, [this, correct]() {
+            blockClicks = false;
+            correct ? proceedToNextLevel() : on_backToMenuBtn_clicked();
+        });
+    });
+}
+
+
+
+void gamewindow::animateBlink(QPushButton* button, int times, int interval,
+                              const QString& finalStyle,
+                              std::function<void()> onFinished)
+{
+    for (int i = 0; i < times * 2; ++i) {
+        QTimer::singleShot(i * interval, this, [this, button, i, finalStyle]() {
+            button->setStyleSheet(i % 2 == 0
+                                      ? blinkAnswerStyle()
+                                      : finalStyle);
+        });
     }
 
-    QTimer::singleShot(1000, this, [this, correct]() {
-        blockClicks = false;
-        if (correct) {
-            proceedToNextLevel();
-        } else {
-            on_backToMenuBtn_clicked();
-        }
-    });
+    QTimer::singleShot(times * 2 * interval, this, onFinished);
+}
+
+
+void gamewindow::resetStylesAnswerBtn()
+{
+    for (auto* btn : answerButtons)
+        btn->setStyleSheet(baseAnswerStyle());
+}
+
+
+void gamewindow::proceedToNextLevel()
+{
+    // Сброс стиля у всех кнопок
+    resetStylesAnswerBtn();
+
+    // Здесь логика перехода на следующий уровень
+    // Например: загрузка нового вопроса
+    loadNextQuestion(); // если у тебя есть такая функция
+}
+
+void gamewindow::loadNextQuestion()
+{
+    level++;
+    ui->valueLevelLbl->setText("Вопрос " + QString::number(level) + "/15");
+    startCountdown();
+
+    if (level <= 15) {
+        ui->prizeList->setCurrentRow(15 - level);
+    }
 }
 
 void gamewindow::startCountdown()
@@ -147,38 +167,77 @@ void gamewindow::startCountdown()
     countdownTimer->start();
 }
 
-void gamewindow::resetStylesAnswerBtn()
-{
-    for (QPushButton* btn : answerButtons)
-        btn->setStyleSheet("");
-}
-
-void gamewindow::loadNextQuestion()
-{
-    level++;
-    ui->valueLevelLbl->setText("Вопрос " + QString::number(level) + "/15");
-    startCountdown();
-
-    if (level <= 15) {
-        ui->prizeList->setCurrentRow(15 - level);
-    }
-}
-
-void gamewindow::proceedToNextLevel()
-{
-    // Сброс стиля у всех кнопок
-    resetStylesAnswerBtn();
-
-    // Здесь логика перехода на следующий уровень
-    // Например: загрузка нового вопроса
-    loadNextQuestion(); // если у тебя есть такая функция
-}
-
 void gamewindow::on_backToMenuBtn_clicked()
 {
-    setEnabled(true);
     startwindow *startw = new startwindow();
     startw->show();
     this->hide();
 }
+
+void gamewindow::on_takeMoneyBtn_clicked()
+{
+    startwindow *startw = new startwindow();
+    startw->balance = prizeLevels[15-level+1];
+    startw->show();
+    this->hide();
+    //if(level > 1 && level < 16)
+      //  emit sendBalance(prizeLevels[15-level+1]);
+}
+
+QString gamewindow::baseAnswerStyle() const
+{
+    return R"(
+        QPushButton {
+            background-color: #1e1e1e;
+            color: white;
+            font: bold 16px "Segoe UI";
+            border: 2px solid #444;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        QPushButton:hover {
+            background-color: #2e2e2e;
+            border-color: #888;
+        }
+        QPushButton:pressed {
+            background-color: #0078d7;
+            color: white;
+            border-color: #005bb5;
+        }
+    )";
+}
+QString gamewindow::correctAnswerStyle() const {
+    return baseAnswerStyle() + " QPushButton { background-color: green; color: white; }";
+}
+QString gamewindow::wrongAnswerStyle() const {
+    return baseAnswerStyle() + " QPushButton { background-color: red; color: white; }";
+}
+QString gamewindow::blinkAnswerStyle() const {
+    return baseAnswerStyle() + " QPushButton { background-color: yellow; color: black; }";
+}
+QString gamewindow::answerStyle(const QString& bgColor, const QString& textColor) const {
+    return QString(R"(
+        QPushButton {
+            background-color: %1;
+            color: %2;
+            font: bold 16px "Segoe UI";
+            border: 2px solid #444;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        QPushButton:hover {
+            background-color: #2e2e2e;
+            border-color: #888;
+        }
+        QPushButton:pressed {
+            background-color: #0078d7;
+            color: white;
+            border-color: #005bb5;
+        }
+    )").arg(bgColor, textColor);
+}
+
+
 

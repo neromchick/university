@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>340</y>
+      <y>350</y>
       <width>231</width>
       <height>81</height>
      </rect>
@@ -36,8 +36,35 @@
       <height>81</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+        background-color: #1e1e1e;
+        color: white;
+        font: bold 16px &quot;Segoe UI&quot;;
+        border: 2px solid #444;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+    }
+    QPushButton:hover {
+        background-color: #2e2e2e;
+        border-color: #888;
+    }
+    QPushButton:pressed {
+        background-color: #0078d7;
+        color: white;
+        border-color: #005bb5;
+    }
+</string>
+    </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>вамммммммммммммммммммммммммммммммммммммвыямячм</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="answerBtn3">
@@ -76,7 +103,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>50/50</string>
     </property>
    </widget>
    <widget class="QPushButton" name="audienceBtn">
@@ -89,7 +116,9 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Помощь
+зала
+</string>
     </property>
    </widget>
    <widget class="QPushButton" name="callBtn">
@@ -115,7 +144,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Забрать деньги</string>
     </property>
    </widget>
    <widget class="QPushButton" name="backToMenuBtn">
@@ -128,7 +157,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Назад</string>
     </property>
    </widget>
    <widget class="QListWidget" name="prizeList">
@@ -244,7 +273,7 @@ QListWidget {
      <rect>
       <x>20</x>
       <y>120</y>
-      <width>531</width>
+      <width>621</width>
       <height>201</height>
      </rect>
     </property>
@@ -257,9 +286,9 @@ QListWidget {
     <widget class="QLabel" name="questionLbl">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>10</x>
        <y>70</y>
-       <width>531</width>
+       <width>601</width>
        <height>131</height>
       </rect>
      </property>
@@ -268,11 +297,23 @@ QListWidget {
        <pointsize>14</pointsize>
       </font>
      </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Plain</enum>
+     </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string>Эти методы пригодятся в будущем. Вы сможете их использовать на ряду и в перемешку с остальными методами</string>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="valueLevelLbl">
@@ -280,8 +321,8 @@ QListWidget {
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>531</width>
-       <height>41</height>
+       <width>621</width>
+       <height>61</height>
       </rect>
      </property>
      <property name="font">
@@ -299,34 +340,21 @@ QListWidget {
     <widget class="QLabel" name="countdownLbl">
      <property name="geometry">
       <rect>
-       <x>410</x>
-       <y>10</y>
-       <width>63</width>
-       <height>20</height>
+       <x>510</x>
+       <y>0</y>
+       <width>101</width>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>TextLabel</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>350</y>
-      <width>41</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>28</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>A</string>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
