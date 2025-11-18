@@ -1133,7 +1133,9 @@ D:/HobbyHorsing/aaKURSACH/MillionaireGame/gamewindow.h
  mdp:D:/Soft/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h
  mdp:D:/Soft/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:D:/Soft/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h
+D:/HobbyHorsing/aaKURSACH/MillionaireGame/styles.h
 D:/HobbyHorsing/aaKURSACH/MillionaireGame/startwindow.cpp
  uic:ui_startwindow.h
 D:/HobbyHorsing/aaKURSACH/MillionaireGame/gamewindow.cpp
  uic:ui_gamewindow.h
+D:/HobbyHorsing/aaKURSACH/MillionaireGame/styles.cpp

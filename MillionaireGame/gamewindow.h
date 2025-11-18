@@ -21,20 +21,20 @@
 
     private slots:
         void on_answerBtn_clicked();
+        void on_hintBtn_clicked();
         void on_backToMenuBtn_clicked();
-        void animateBlink(QPushButton* button, int times, int interval, const QString& finalStyle, std::function<void()> onFinished);
+        //void animateBlink(QPushButton* button, int times, int interval, const QString& finalStyle, std::function<void()> onFinished);
+        void animateBlink(QPushButton* button, int times, int interval,
+                          std::function<void()> onFinished = nullptr);
+
         void startCountdown();
         void resetStylesAnswerBtn();
+        void applyStylesHintBtn();
         void proceedToNextLevel();
         void loadNextQuestion();
         void initPrizeList();
 
         void on_takeMoneyBtn_clicked();
-        QString baseAnswerStyle() const;
-        QString correctAnswerStyle() const;
-        QString wrongAnswerStyle() const;
-        QString blinkAnswerStyle() const;
-        QString answerStyle(const QString& bgColor, const QString& textColor) const;
 
     private:
         Ui::gamewindow *ui;
@@ -43,6 +43,7 @@
         double countdown = 15.00;
         QTimer* countdownTimer = nullptr;
         QList<QPushButton*> answerButtons;
+        QList<QPushButton*> hintButtons;
     };
 
 

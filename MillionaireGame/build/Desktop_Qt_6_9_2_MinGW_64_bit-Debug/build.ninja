@@ -81,6 +81,14 @@ build CMakeFiles/MillionaireGame.dir/gamewindow.cpp.obj: CXX_COMPILER__Millionai
   OBJECT_DIR = CMakeFiles\MillionaireGame.dir
   OBJECT_FILE_DIR = CMakeFiles\MillionaireGame.dir
 
+build CMakeFiles/MillionaireGame.dir/styles.cpp.obj: CXX_COMPILER__MillionaireGame_unscanned_Debug D$:/HobbyHorsing/aaKURSACH/MillionaireGame/styles.cpp || cmake_object_order_depends_target_MillionaireGame
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\MillionaireGame.dir\styles.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -fdiagnostics-color=always
+  INCLUDES = -ID:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MillionaireGame_autogen/include -isystem D:/Soft/Qt/6.9.2/mingw_64/include/QtCore -isystem D:/Soft/Qt/6.9.2/mingw_64/include -isystem D:/Soft/Qt/6.9.2/mingw_64/mkspecs/win32-g++ -isystem D:/Soft/Qt/6.9.2/mingw_64/include/QtWidgets -isystem D:/Soft/Qt/6.9.2/mingw_64/include/QtGui
+  OBJECT_DIR = CMakeFiles\MillionaireGame.dir
+  OBJECT_FILE_DIR = CMakeFiles\MillionaireGame.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target MillionaireGame
@@ -89,7 +97,7 @@ build CMakeFiles/MillionaireGame.dir/gamewindow.cpp.obj: CXX_COMPILER__Millionai
 #############################################
 # Link the executable MillionaireGame.exe
 
-build MillionaireGame.exe: CXX_EXECUTABLE_LINKER__MillionaireGame_Debug CMakeFiles/MillionaireGame.dir/MillionaireGame_autogen/mocs_compilation.cpp.obj CMakeFiles/MillionaireGame.dir/main.cpp.obj CMakeFiles/MillionaireGame.dir/startwindow.cpp.obj CMakeFiles/MillionaireGame.dir/gamewindow.cpp.obj | D$:/Soft/Qt/6.9.2/mingw_64/lib/libQt6Widgets.a D$:/Soft/Qt/6.9.2/mingw_64/lib/libQt6Gui.a D$:/Soft/Qt/6.9.2/mingw_64/lib/libQt6Core.a D$:/Soft/Qt/6.9.2/mingw_64/lib/libQt6EntryPoint.a || MillionaireGame_autogen MillionaireGame_autogen_timestamp_deps
+build MillionaireGame.exe: CXX_EXECUTABLE_LINKER__MillionaireGame_Debug CMakeFiles/MillionaireGame.dir/MillionaireGame_autogen/mocs_compilation.cpp.obj CMakeFiles/MillionaireGame.dir/main.cpp.obj CMakeFiles/MillionaireGame.dir/startwindow.cpp.obj CMakeFiles/MillionaireGame.dir/gamewindow.cpp.obj CMakeFiles/MillionaireGame.dir/styles.cpp.obj | D$:/Soft/Qt/6.9.2/mingw_64/lib/libQt6Widgets.a D$:/Soft/Qt/6.9.2/mingw_64/lib/libQt6Gui.a D$:/Soft/Qt/6.9.2/mingw_64/lib/libQt6Core.a D$:/Soft/Qt/6.9.2/mingw_64/lib/libQt6EntryPoint.a || MillionaireGame_autogen MillionaireGame_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = D:/Soft/Qt/6.9.2/mingw_64/lib/libQt6Widgets.a  D:/Soft/Qt/6.9.2/mingw_64/lib/libQt6Gui.a  D:/Soft/Qt/6.9.2/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  D:/Soft/Qt/6.9.2/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

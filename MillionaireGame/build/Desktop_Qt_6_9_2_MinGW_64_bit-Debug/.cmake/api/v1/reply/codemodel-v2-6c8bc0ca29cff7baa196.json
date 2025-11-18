@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-7b4e113258642a4158dd.json",
+					"jsonFile" : "directory-.-Debug-44cdeeadefefb676751e.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "MillionaireGame::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-MillionaireGame-Debug-4eb4f819f67900ce2027.json",
+					"jsonFile" : "target-MillionaireGame-Debug-274658e45b8f54e312c8.json",
 					"name" : "MillionaireGame",
 					"projectIndex" : 0
 				},

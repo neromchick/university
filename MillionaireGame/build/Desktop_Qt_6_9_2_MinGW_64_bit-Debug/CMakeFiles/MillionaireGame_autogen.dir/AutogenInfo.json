@@ -358,6 +358,12 @@
 			"MU",
 			"EWIEGA46WW/moc_startwindow.cpp",
 			null
+		],
+		[
+			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/styles.h",
+			"MU",
+			"EWIEGA46WW/moc_styles.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -440,7 +446,8 @@
 			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/startwindow.cpp",
 			"MU",
 			null
-		]
+		],
+		[ "D:/HobbyHorsing/aaKURSACH/MillionaireGame/styles.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

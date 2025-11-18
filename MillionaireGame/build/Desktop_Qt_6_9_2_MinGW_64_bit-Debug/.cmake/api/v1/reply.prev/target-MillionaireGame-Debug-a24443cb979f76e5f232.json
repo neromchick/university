@@ -75,13 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 29,
+				"line" : 30,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 21,
+				"line" : 22,
 				"parent" : 0
 			},
 			{
@@ -480,9 +480,9 @@
 			"sourceIndexes" : 
 			[
 				0,
-				8,
 				9,
-				10
+				10,
+				11
 			]
 		},
 		{
@@ -499,7 +499,8 @@
 			"sourceIndexes" : 
 			[
 				2,
-				5
+				5,
+				8
 			]
 		},
 		{
@@ -514,7 +515,7 @@
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				11
+				12
 			]
 		}
 	],
@@ -564,6 +565,11 @@
 			"backtrace" : 4,
 			"path" : "gamewindow.ui",
 			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 4,
+			"path" : "styles.h",
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 0,

@@ -52,10 +52,10 @@ public:
         centralwidget->setObjectName("centralwidget");
         answerBtn1 = new QPushButton(centralwidget);
         answerBtn1->setObjectName("answerBtn1");
-        answerBtn1->setGeometry(QRect(20, 350, 231, 81));
+        answerBtn1->setGeometry(QRect(20, 340, 270, 90));
         answerBtn2 = new QPushButton(centralwidget);
         answerBtn2->setObjectName("answerBtn2");
-        answerBtn2->setGeometry(QRect(320, 340, 231, 81));
+        answerBtn2->setGeometry(QRect(360, 340, 270, 90));
         answerBtn2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "        background-color: #1e1e1e;\n"
 "        color: white;\n"
@@ -79,10 +79,10 @@ public:
         answerBtn2->setChecked(false);
         answerBtn3 = new QPushButton(centralwidget);
         answerBtn3->setObjectName("answerBtn3");
-        answerBtn3->setGeometry(QRect(20, 450, 231, 81));
+        answerBtn3->setGeometry(QRect(20, 450, 270, 90));
         answerBtn4 = new QPushButton(centralwidget);
         answerBtn4->setObjectName("answerBtn4");
-        answerBtn4->setGeometry(QRect(320, 440, 231, 81));
+        answerBtn4->setGeometry(QRect(360, 450, 270, 90));
         fiftyFiftyBtn = new QPushButton(centralwidget);
         fiftyFiftyBtn->setObjectName("fiftyFiftyBtn");
         fiftyFiftyBtn->setGeometry(QRect(120, 20, 91, 81));
