@@ -117,8 +117,7 @@
     </property>
     <property name="text">
      <string>Помощь
-зала
-</string>
+зала</string>
     </property>
    </widget>
    <widget class="QPushButton" name="callBtn">
@@ -130,15 +129,19 @@
       <height>81</height>
      </rect>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::LayoutDirection::LeftToRight</enum>
+    </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Звонок
+другу</string>
     </property>
    </widget>
    <widget class="QPushButton" name="takeMoneyBtn">
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>20</y>
+      <y>25</y>
       <width>201</width>
       <height>71</height>
      </rect>
@@ -151,9 +154,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>50</y>
+      <y>40</y>
       <width>90</width>
-      <height>29</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -277,6 +280,9 @@ QListWidget {
       <height>201</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="frameShape">
      <enum>QFrame::Shape::StyledPanel</enum>
     </property>
@@ -350,6 +356,9 @@ QListWidget {
       <font>
        <pointsize>14</pointsize>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>TextLabel</string>

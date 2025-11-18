@@ -12,12 +12,12 @@
     {
         Q_OBJECT
 
+    signals:
+        void gameFinished(int money);
+
     public:
         explicit gamewindow(QWidget *parent = nullptr);
         ~gamewindow();
-
-    signals:
-        void sendBalance(const QString value);
 
     private slots:
         void on_answerBtn_clicked();
@@ -43,7 +43,7 @@
         double countdown = 15.00;
         QTimer* countdownTimer = nullptr;
         QList<QPushButton*> answerButtons;
-        QList<QPushButton*> hintButtons;
+        QList<QPushButton*> hintButtons;        
     };
 
 

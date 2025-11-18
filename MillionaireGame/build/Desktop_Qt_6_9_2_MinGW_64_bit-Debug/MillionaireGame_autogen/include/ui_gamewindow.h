@@ -92,12 +92,13 @@ public:
         callBtn = new QPushButton(centralwidget);
         callBtn->setObjectName("callBtn");
         callBtn->setGeometry(QRect(340, 20, 91, 81));
+        callBtn->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
         takeMoneyBtn = new QPushButton(centralwidget);
         takeMoneyBtn->setObjectName("takeMoneyBtn");
-        takeMoneyBtn->setGeometry(QRect(450, 20, 201, 71));
+        takeMoneyBtn->setGeometry(QRect(450, 25, 201, 71));
         backToMenuBtn = new QPushButton(centralwidget);
         backToMenuBtn->setObjectName("backToMenuBtn");
-        backToMenuBtn->setGeometry(QRect(20, 50, 90, 29));
+        backToMenuBtn->setGeometry(QRect(20, 40, 90, 41));
         prizeList = new QListWidget(centralwidget);
         new QListWidgetItem(prizeList);
         new QListWidgetItem(prizeList);
@@ -140,6 +141,7 @@ public:
         frame = new QFrame(centralwidget);
         frame->setObjectName("frame");
         frame->setGeometry(QRect(20, 120, 621, 201));
+        frame->setStyleSheet(QString::fromUtf8(""));
         frame->setFrameShape(QFrame::Shape::StyledPanel);
         frame->setFrameShadow(QFrame::Shadow::Raised);
         questionLbl = new QLabel(frame);
@@ -162,6 +164,7 @@ public:
         countdownLbl->setObjectName("countdownLbl");
         countdownLbl->setGeometry(QRect(510, 0, 101, 41));
         countdownLbl->setFont(font);
+        countdownLbl->setStyleSheet(QString::fromUtf8(""));
         gamewindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(gamewindow);
         menubar->setObjectName("menubar");
@@ -185,9 +188,9 @@ public:
         answerBtn4->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
         fiftyFiftyBtn->setText(QCoreApplication::translate("gamewindow", "50/50", nullptr));
         audienceBtn->setText(QCoreApplication::translate("gamewindow", "\320\237\320\276\320\274\320\276\321\211\321\214\n"
-"\320\267\320\260\320\273\320\260\n"
-"", nullptr));
-        callBtn->setText(QCoreApplication::translate("gamewindow", "PushButton", nullptr));
+"\320\267\320\260\320\273\320\260", nullptr));
+        callBtn->setText(QCoreApplication::translate("gamewindow", "\320\227\320\262\320\276\320\275\320\276\320\272\n"
+"\320\264\321\200\321\203\320\263\321\203", nullptr));
         takeMoneyBtn->setText(QCoreApplication::translate("gamewindow", "\320\227\320\260\320\261\321\200\320\260\321\202\321\214 \320\264\320\265\320\275\321\214\320\263\320\270", nullptr));
         backToMenuBtn->setText(QCoreApplication::translate("gamewindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
 

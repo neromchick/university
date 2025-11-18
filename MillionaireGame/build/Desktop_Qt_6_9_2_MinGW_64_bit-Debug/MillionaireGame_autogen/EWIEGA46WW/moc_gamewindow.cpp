@@ -39,9 +39,9 @@ template <> constexpr inline auto gamewindow::qt_create_metaobjectdata<qt_meta_t
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "gamewindow",
-        "sendBalance",
+        "gameFinished",
         "",
-        "value",
+        "money",
         "on_answerBtn_clicked",
         "on_hintBtn_clicked",
         "on_backToMenuBtn_clicked",
@@ -62,9 +62,9 @@ template <> constexpr inline auto gamewindow::qt_create_metaobjectdata<qt_meta_t
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Signal 'sendBalance'
-        QtMocHelpers::SignalData<void(const QString)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 3 },
+        // Signal 'gameFinished'
+        QtMocHelpers::SignalData<void(int)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 3 },
         }}),
         // Slot 'on_answerBtn_clicked'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
@@ -117,7 +117,7 @@ void gamewindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<gamewindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->sendBalance((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 0: _t->gameFinished((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 1: _t->on_answerBtn_clicked(); break;
         case 2: _t->on_hintBtn_clicked(); break;
         case 3: _t->on_backToMenuBtn_clicked(); break;
@@ -153,7 +153,7 @@ void gamewindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (gamewindow::*)(const QString )>(_a, &gamewindow::sendBalance, 0))
+        if (QtMocHelpers::indexOfMethod<void (gamewindow::*)(int )>(_a, &gamewindow::gameFinished, 0))
             return;
     }
 }
@@ -190,7 +190,7 @@ int gamewindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void gamewindow::sendBalance(const QString _t1)
+void gamewindow::gameFinished(int _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
 }

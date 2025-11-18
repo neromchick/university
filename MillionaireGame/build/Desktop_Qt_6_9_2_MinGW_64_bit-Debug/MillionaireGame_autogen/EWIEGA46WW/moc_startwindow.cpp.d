@@ -1,5 +1,6 @@
 D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MillionaireGame_autogen/EWIEGA46WW/moc_startwindow.cpp: D:/HobbyHorsing/aaKURSACH/MillionaireGame/startwindow.h \
   D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MillionaireGame_autogen/moc_predefs.h \
+  D:/HobbyHorsing/aaKURSACH/MillionaireGame/gamewindow.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/q17memory.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/q20functional.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/q20iterator.h \
@@ -152,7 +153,10 @@ D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-De
   D:/Soft/Qt/6.9.2/mingw_64/include/QtGui/qwindowdefs.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtWidgets/QMainWindow \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtWidgets/QPushButton \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtWidgets/qabstractbutton.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtWidgets/qmainwindow.h \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtWidgets/qpushbutton.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtWidgets/qsizepolicy.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtWidgets/qtabwidget.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtWidgets/qtwidgets-config.h \

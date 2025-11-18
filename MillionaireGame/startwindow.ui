@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>484</width>
+    <height>538</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QPushButton" name="startBtn">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>260</y>
-      <width>161</width>
+      <x>140</x>
+      <y>200</y>
+      <width>211</width>
       <height>81</height>
      </rect>
     </property>
@@ -30,9 +30,9 @@
    <widget class="QPushButton" name="exitBtn">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>370</y>
-      <width>161</width>
+      <x>140</x>
+      <y>340</y>
+      <width>211</width>
       <height>81</height>
      </rect>
     </property>
@@ -40,41 +40,57 @@
      <string>ВЫХОД</string>
     </property>
    </widget>
-   <widget class="QLabel" name="balanceLbl">
+   <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>21</y>
-      <width>191</width>
-      <height>31</height>
+      <x>170</x>
+      <y>10</y>
+      <width>311</width>
+      <height>51</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-     </font>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
     </property>
-    <property name="text">
-     <string>0</string>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
     </property>
-   </widget>
-   <widget class="QLabel" name="balLbl_2">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>20</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Баланс:</string>
-    </property>
+    <widget class="QLabel" name="balLbl_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Баланс:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="balanceLbl">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>11</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -82,7 +98,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>484</width>
      <height>25</height>
     </rect>
    </property>

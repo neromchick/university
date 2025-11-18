@@ -24,8 +24,6 @@ gamewindow::gamewindow(QWidget *parent)
     resetStylesAnswerBtn();
     applyStylesHintBtn();
 
-    connect(this, &gamewindow::sendBalance,new startwindow, &startwindow::recieveBalance);
-
     startCountdown();
     //ui->prizeList->setCurrentRow(14);
     initPrizeList();
@@ -116,6 +114,11 @@ void gamewindow::applyStylesHintBtn()
         btn->setStyleSheet(hintButtonStyle());
 }
 
+void gamewindow::on_hintBtn_clicked()
+{
+
+}
+
 void gamewindow::on_answerBtn_clicked()
 {
     if (blockClicks) return;
@@ -181,12 +184,13 @@ void gamewindow::animateBlink(QPushButton* button, int times, int interval,
 
 void gamewindow::proceedToNextLevel()
 {
-    // Сброс стиля у всех кнопок
+    //QMessageBox::information(this, "Уведомление", QString::number(level));
+
+    QMessageBox::information(this, "Уведомление", prizeLevels[15-level+1-1]);
+
     resetStylesAnswerBtn();
 
-    // Здесь логика перехода на следующий уровень
-    // Например: загрузка нового вопроса
-    loadNextQuestion(); // если у тебя есть такая функция
+    loadNextQuestion();
 }
 
 void gamewindow::loadNextQuestion()
@@ -209,10 +213,17 @@ void gamewindow::on_backToMenuBtn_clicked()
 
 void gamewindow::on_takeMoneyBtn_clicked()
 {
-    startwindow *startw = new startwindow();
-    startw->balance = prizeLevels[15-level+1];
-    startw->show();
-    this->hide();
+    if(level > 1 && level < 16)
+        emit gameFinished((prizeLevels[15-level+1]).toInt());
+    QTimer::singleShot(100, this, [this]() {
+        //if (countdownTimer)
+            //countdownTimer->stop();
+        on_backToMenuBtn_clicked();
+    });
+    //startwindow *startw = new startwindow();
+    //startw->balance = prizeLevels[15-level+1];
+    //startw->show();
+    //this->hide();
     //if(level > 1 && level < 16)
     //  emit sendBalance(prizeLevels[15-level+1]);
 }

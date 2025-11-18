@@ -2,6 +2,7 @@
 #define STARTWINDOW_H
 
 #include <QMainWindow>
+#include "gamewindow.h"
 
 namespace Ui {
 class startwindow;
@@ -14,18 +15,19 @@ class startwindow : public QMainWindow
 public:
     explicit startwindow(QWidget *parent = nullptr);
     ~startwindow();
-    void recieveBalance(const QString& value);
-    QString balance = "-100";
 
 private slots:
     void on_startBtn_clicked();
     void on_exitBtn_clicked();
+    void updateBalance(int money);
 
 public slots:
 
 
 private:
     Ui::startwindow *ui;
+    //int balance = 0;
+    //gamewindow *game = nullptr;
 };
 
 #endif // STARTWINDOW_H
