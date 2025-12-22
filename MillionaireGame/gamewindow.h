@@ -1,50 +1,91 @@
-    #ifndef GAMEWINDOW_H
-    #define GAMEWINDOW_H
+#ifndef GAMEWINDOW_H
+#define GAMEWINDOW_H
 
-    #include <QPushButton>
-    #include <QMainWindow>
+#include <QMainWindow>
+#include <QPushButton>
+#include <QTimer>
+#include <QVector>
+#include <QList>
+#include <functional>
 
-    namespace Ui {
-    class gamewindow;
-    }
+namespace Ui {
+class gamewindow;
+}
 
-    class gamewindow : public QMainWindow
-    {
-        Q_OBJECT
+class gamewindow : public QMainWindow
+{
+    Q_OBJECT
 
-    signals:
-        void gameFinished(int money);
+signals:
+    void gameFinished(int money);
 
+public:
+    explicit gamewindow(QWidget *parent = nullptr);
+    ~gamewindow();
+
+private slots:
+    // Игровая логика
+    void on_answerBtn_clicked();
+    void on_hintBtn_clicked();
+    void on_backToMenuBtn_clicked();
+    void on_takeMoneyBtn_clicked();
+    void on_fiftyFiftyBtn_clicked();
+    void on_audienceBtn_clicked();
+    void on_callBtn_clicked();
+
+    // Вспомогательные методы
+    void animateBlink(QPushButton* button, int times, int interval,
+                      std::function<void()> onFinished = nullptr);
+    void startCountdown();
+    void resetStylesAnswerBtn();
+    void applyStylesHintBtn();
+    void proceedToNextLevel();
+    void loadNextQuestion();
+    void initPrizeList();
+
+private:
+    Ui::gamewindow *ui;
+
+    // Основные переменные игры
+    int level = 1;
+    bool blockClicks = false;
+    double countdown = 15.00;
+    QTimer* countdownTimer = nullptr;
+
+    bool fiftyFiftyUsed = false;
+    bool audienceUsed = false;
+    bool callUsed = false;
+
+    // Кнопки
+    QList<QPushButton*> answerButtons;
+    QList<QPushButton*> hintButtons;
+
+    // Система вопросов
+    class Question {
     public:
-        explicit gamewindow(QWidget *parent = nullptr);
-        ~gamewindow();
-
-    private slots:
-        void on_answerBtn_clicked();
-        void on_hintBtn_clicked();
-        void on_backToMenuBtn_clicked();
-        //void animateBlink(QPushButton* button, int times, int interval, const QString& finalStyle, std::function<void()> onFinished);
-        void animateBlink(QPushButton* button, int times, int interval,
-                          std::function<void()> onFinished = nullptr);
-
-        void startCountdown();
-        void resetStylesAnswerBtn();
-        void applyStylesHintBtn();
-        void proceedToNextLevel();
-        void loadNextQuestion();
-        void initPrizeList();
-
-        void on_takeMoneyBtn_clicked();
-
-    private:
-        Ui::gamewindow *ui;
-        int level = 1;
-        bool blockClicks = false;
-        double countdown = 15.00;
-        QTimer* countdownTimer = nullptr;
-        QList<QPushButton*> answerButtons;
-        QList<QPushButton*> hintButtons;        
+        QString text;
+        QString answers[4];
+        int correctIndex; // 0–3
     };
 
+    QVector<Question> allQuestions;   // все вопросы из файла
+    QVector<Question> gameQuestions;  // вопросы для текущей игры
+    int currentQuestionIndex = 0;
+    int correctAnswerIndex = -1;
 
-    #endif // GAMEWINDOW_H
+    // Призы
+    QStringList prizeLevels;
+
+    // Методы для работы с вопросами
+    void loadQuestionsFromFile(const QString& filename);
+    void randomizeQuestions();
+    void loadCurrentQuestion();
+    void startNewGame();
+    QPushButton* getCorrectButton();
+
+    // Завершение игры
+    void on_gameWon();
+    void on_gameLost();
+};
+
+#endif // GAMEWINDOW_H

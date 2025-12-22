@@ -1,5 +1,8 @@
 D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MillionaireGame_autogen/EWIEGA46WW/moc_gamewindow.cpp: D:/HobbyHorsing/aaKURSACH/MillionaireGame/gamewindow.h \
   D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MillionaireGame_autogen/moc_predefs.h \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QList \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QTimer \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QVector \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/q17memory.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/q20functional.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/q20iterator.h \
@@ -7,6 +10,7 @@ D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-De
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/q20type_traits.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/q20utility.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/q23utility.h \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qabstracteventdispatcher.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qalgorithms.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qanystringview.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qarraydata.h \
@@ -16,6 +20,7 @@ D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-De
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qatomic.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qatomic_cxx11.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qbasicatomic.h \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qbasictimer.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qbindingstorage.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qbytearray.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -34,8 +39,11 @@ D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-De
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qcontiguouscache.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qdarwinhelpers.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qdatastream.h \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qdeadlinetimer.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qdebug.h \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qelapsedtimer.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qendian.h \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qeventloop.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qexceptionhandling.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qflags.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qfloat16.h \
@@ -109,6 +117,7 @@ D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-De
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qtenvironmentvariables.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qtextstream.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qtformat_impl.h \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qtimer.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qtmetamacros.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qtnoop.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -122,6 +131,7 @@ D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-De
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qutf8stringview.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qvariant.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qvarlengtharray.h \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qvector.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qversiontagging.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qxptype_traits.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/qyieldcpu.h \

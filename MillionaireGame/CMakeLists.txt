@@ -15,6 +15,7 @@ qt_add_executable(MillionaireGame
     gamewindow.h gamewindow.cpp gamewindow.ui
     styles.h
     styles.cpp
+    question.h
 
 
 

@@ -22,12 +22,12 @@ private slots:
     void updateBalance(int money);
 
 public slots:
-
+    void onGameFinished(int money);
 
 private:
     Ui::startwindow *ui;
-    //int balance = 0;
-    //gamewindow *game = nullptr;
+    int balance = 0;
+    gamewindow *currentGame = nullptr;
 };
 
 #endif // STARTWINDOW_H
