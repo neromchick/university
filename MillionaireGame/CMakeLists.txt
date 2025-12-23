@@ -16,6 +16,10 @@ qt_add_executable(MillionaireGame
     styles.h
     styles.cpp
     question.h
+    questionmanager.h questionmanager.cpp
+    gameengine.h
+    wallet.h
+    gameengine.cpp
 
 
 

@@ -6,14 +6,23 @@ MillionaireGame_autogen/timestamp: \
 	D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
 	D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
 	D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MillionaireGame_autogen/moc_predefs.h \
+	D:/HobbyHorsing/aaKURSACH/MillionaireGame/gameengine.cpp \
+	D:/HobbyHorsing/aaKURSACH/MillionaireGame/gameengine.h \
 	D:/HobbyHorsing/aaKURSACH/MillionaireGame/gamewindow.cpp \
 	D:/HobbyHorsing/aaKURSACH/MillionaireGame/gamewindow.h \
 	D:/HobbyHorsing/aaKURSACH/MillionaireGame/main.cpp \
+	D:/HobbyHorsing/aaKURSACH/MillionaireGame/question.h \
+	D:/HobbyHorsing/aaKURSACH/MillionaireGame/questionmanager.cpp \
+	D:/HobbyHorsing/aaKURSACH/MillionaireGame/questionmanager.h \
 	D:/HobbyHorsing/aaKURSACH/MillionaireGame/startwindow.cpp \
 	D:/HobbyHorsing/aaKURSACH/MillionaireGame/startwindow.h \
 	D:/HobbyHorsing/aaKURSACH/MillionaireGame/styles.cpp \
 	D:/HobbyHorsing/aaKURSACH/MillionaireGame/styles.h \
+	D:/HobbyHorsing/aaKURSACH/MillionaireGame/wallet.h \
 	D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QList \
+	D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QObject \
+	D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QString \
+	D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QStringList \
 	D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QTimer \
 	D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QVector \
 	D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/q17memory.h \

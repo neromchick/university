@@ -1,6 +1,12 @@
 D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MillionaireGame_autogen/EWIEGA46WW/moc_gamewindow.cpp: D:/HobbyHorsing/aaKURSACH/MillionaireGame/gamewindow.h \
   D:/HobbyHorsing/aaKURSACH/MillionaireGame/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MillionaireGame_autogen/moc_predefs.h \
+  D:/HobbyHorsing/aaKURSACH/MillionaireGame/gameengine.h \
+  D:/HobbyHorsing/aaKURSACH/MillionaireGame/question.h \
+  D:/HobbyHorsing/aaKURSACH/MillionaireGame/questionmanager.h \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QList \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QObject \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QString \
+  D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QStringList \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QTimer \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/QVector \
   D:/Soft/Qt/6.9.2/mingw_64/include/QtCore/q17memory.h \

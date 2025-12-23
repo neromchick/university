@@ -13,7 +13,7 @@
 #include <random>         // Для C++11 random
 #include <algorithm>      // Для shuffle
 #include "styles.h"
-
+#include "wallet.h"
 
 gamewindow::gamewindow(QWidget *parent)
     : QMainWindow(parent)
@@ -29,50 +29,82 @@ gamewindow::gamewindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->prizeList->setVisible(true);
-    ui->prizeList->show();
+    // 1. Инициализация движка и менеджера
+    qManager = new QuestionManager();
+    engine = new GameEngine(this);
 
+    // 2. Настройка кнопок (интерфейс)
+    answerButtons = { ui->answerBtn1, ui->answerBtn2, ui->answerBtn3, ui->answerBtn4 };
+    for (QPushButton* btn : answerButtons)
+        connect(btn, &QPushButton::clicked, this, &gamewindow::on_answerBtn_clicked);
+
+    hintButtons = {ui->backToMenuBtn, ui->fiftyFiftyBtn, ui->audienceBtn,
+                   ui->callBtn, ui->takeMoneyBtn};
+    for(QPushButton* btn : hintButtons)
+        connect(btn, &QPushButton::clicked, this, &gamewindow::on_hintBtn_clicked);
+
+    // 3. Таблица призов
     prizeLevels = {
         "1 000 000", "700 000", "400 000", "200 000", "100 000",
         "50 000", "25 000", "15 000", "10 000", "5 000",
         "2 000", "1 000", "500", "200", "100"
     };
 
-    // ИНИЦИАЛИЗАЦИЯ КНОПОК ИЗ ПЕРВОГО КОНСТРУКТОРА
-    answerButtons = { ui->answerBtn1, ui->answerBtn2, ui->answerBtn3, ui->answerBtn4 };
-    for (QPushButton* btn : answerButtons)
-        connect(btn, &QPushButton::clicked, this, &gamewindow::on_answerBtn_clicked);
+    // 4. Соединяем сигналы ООП-движка с методами окна
+    connect(engine, &GameEngine::levelPassed, this, &gamewindow::updateUI);
+    connect(engine, &GameEngine::gameWon, this, [this](int prize){
+        Wallet::instance().addMoney(prize);
+        QMessageBox::information(this, "ПОБЕДА!", "Вы выиграли " + QString::number(prize) + " рублей!");
+        this->close();
+    });
 
-    // ИНИЦИАЛИЗАЦИЯ ПОДСКАЗОК ИЗ ПЕРВОГО КОНСТРУКТОРА
-    hintButtons = {ui->backToMenuBtn, ui->fiftyFiftyBtn, ui->audienceBtn,
-                   ui->callBtn, ui->takeMoneyBtn};
-    for(QPushButton* btn : hintButtons)
-        connect(btn, &QPushButton::clicked, this, &gamewindow::on_hintBtn_clicked);
+    // 5. Запуск игры (используем менеджер вопросов)
+    if (qManager->loadQuestions("questions.json")) {
+        // Загружаем вопросы в движок
+        engine->startNewGame(qManager->getRandomQuestions(15));
+    } else {
+        QMessageBox::critical(this, "Ошибка", "Не удалось загрузить вопросы из JSON!");
+    }
 
-    // ЗАГРУЗКА ВОПРОСОВ - РАСКОММЕНТИРУЙТЕ ЭТУ СТРОКУ!
-    loadQuestionsFromFile("questions.json");
-
-    // НАЧАЛО НОВОЙ ИГРЫ (есть в обоих конструкторах)
-    startNewGame();
-
-    // ПРИМЕНЕНИЕ СТИЛЕЙ ИЗ ПЕРВОГО КОНСТРУКТОРА
+    // 6. Визуальная настройка
     resetStylesAnswerBtn();
     applyStylesHintBtn();
-
-    // ИНИЦИАЛИЗАЦИЯ ТАЙМЕРА И СПИСКА ПРИЗОВ ИЗ ПЕРВОГО КОНСТРУКТОРА
-    startCountdown();
     initPrizeList();
-
-    // ДОПОЛНИТЕЛЬНО: Установка текущего приза (есть в первом конструкторе)
-    if (ui->prizeList->count() > 0) {
-        ui->prizeList->setCurrentRow(14); // Самый нижний приз
-    }
 }
 
 
 gamewindow::~gamewindow()
 {
     delete ui;
+}
+
+void gamewindow::updateUI() {
+    // 1. Сбрасываем флаги и стили
+    blockClicks = false;
+    resetStylesAnswerBtn(); // Твой метод, который ставит baseAnswerStyle()
+
+    // 2. Получаем данные нового вопроса из движка
+    Question q = engine->currentQuestion();
+    correctAnswerIndex = q.correctIndex; // Синхронизируем индекс для подсказок
+
+    // 3. Заполняем интерфейс
+    ui->questionLbl->setText(q.text);
+    for(int i = 0; i < 4; i++) {
+        answerButtons[i]->setText(q.answers[i]);
+        answerButtons[i]->setEnabled(true);
+        answerButtons[i]->setVisible(true);
+    }
+
+    // 4. Обновляем уровень и призы
+    int currentLevel = engine->currentLevel();
+    ui->valueLevelLbl->setText(QString("Вопрос %1/15").arg(currentLevel));
+
+    if (ui->prizeList->count() > (15 - currentLevel)) {
+        ui->prizeList->setCurrentRow(15 - currentLevel);
+    }
+
+    // 5. Перезапуск таймера
+    startCountdown();
 }
 
 void gamewindow::initPrizeList()
@@ -193,51 +225,43 @@ void gamewindow::   on_hintBtn_clicked()
 void gamewindow::on_answerBtn_clicked()
 {
     if (blockClicks) return;
-    blockClicks = true;
-
-    if (countdownTimer)
-        countdownTimer->stop();
-
-    resetStylesAnswerBtn();
 
     QPushButton* clickedButton = qobject_cast<QPushButton*>(sender());
-    QPushButton* rightButton = getCorrectButton();
+    if (!clickedButton) return;
 
-    if (!clickedButton || !rightButton) {
-        blockClicks = false;
-        return;
-    }
+    blockClicks = true;
+    if (countdownTimer) countdownTimer->stop();
 
-    // Находим индекс нажатой кнопки
-    int clickedIndex = -1;
-    for (int i = 0; i < 4; i++) {
-        if (answerButtons[i] == clickedButton) {
-            clickedIndex = i;
-            break;
-        }
-    }
+    int clickedIndex = answerButtons.indexOf(clickedButton);
 
-    bool isCorrect = (clickedIndex == correctAnswerIndex);
-
-    // 1) выбранная кнопка сразу жёлтая
+    // 1 ЭТАП: Желтый (на 2 секунды)
     clickedButton->setStyleSheet(blinkAnswerStyle());
 
-    // 2) через 2 секунды показать результат
-    QTimer::singleShot(2000, this, [this, clickedButton, rightButton, isCorrect]() {
+    QTimer::singleShot(2000, this, [this, clickedButton, clickedIndex]() {
+        // Проверяем через движок
+        bool isCorrect = engine->checkAnswer(clickedIndex);
+
+        // 2 ЭТАП: Показываем результат (на 1 секунду)
         if (isCorrect) {
             clickedButton->setStyleSheet(correctAnswerStyle());
         } else {
             clickedButton->setStyleSheet(wrongAnswerStyle());
-            rightButton->setStyleSheet(correctAnswerStyle());
+            // Подсвечиваем правильный (берем из текущего вопроса движка)
+            int correctIdx = engine->currentQuestion().correctIndex;
+            if (correctIdx >= 0) answerButtons[correctIdx]->setStyleSheet(correctAnswerStyle());
         }
 
-        // 3) через секунду переход
+        // 3 ЭТАП: Переход или конец
         QTimer::singleShot(1000, this, [this, isCorrect]() {
             if (isCorrect) {
-                currentQuestionIndex++; // переходим к следующему вопросу
-                proceedToNextLevel();
+                if (engine->currentLevel() < 15) {
+                    engine->nextLevel(); // Повышаем уровень в движке
+                    updateUI();          // Обновляем интерфейс (тут сбросятся стили)
+                } else {
+                    on_gameWon();
+                }
             } else {
-                on_backToMenuBtn_clicked();
+                on_backToMenuBtn_clicked(); // Проиграл
             }
         });
     });
@@ -303,34 +327,27 @@ void gamewindow::on_backToMenuBtn_clicked()
 
 void gamewindow::on_takeMoneyBtn_clicked()
 {
-    if (countdownTimer) {
-        countdownTimer->stop();
-    }
+    if (countdownTimer) countdownTimer->stop();
 
-    int questionsAnswered = level - 1;
-    int finalPrize = 0; // Создаем переменную здесь, чтобы она была доступна везде в методе
+    int questionsAnswered = engine->currentLevel() - 1;
+    int prizeToTake = 0;
 
     if (questionsAnswered > 0) {
-        int prizeIndex = 14 - (questionsAnswered - 1);
-        if (prizeIndex < 0) prizeIndex = 0;
+        // Мы берем приз за ПРЕДЫДУЩИЙ пройденный уровень
+        // В нашем списке призы идут от 100 до 1 000 000 (индексы 0-14)
+        // Если отвечено на 1 вопрос, берем индекс 0.
+        QString s = prizeLevels[15 - questionsAnswered].replace(" ", "");
+        prizeToTake = s.toInt();
 
-        QString prizeStr = prizeLevels[prizeIndex];
-        QString originalPrizeStr = prizeStr;
-        prizeStr = prizeStr.replace(" ", "");
-
-        bool ok;
-        int prizeMoney = prizeStr.toInt(&ok);
-
-        if (ok && prizeMoney > 0) {
-            finalPrize = prizeMoney; // Сохраняем сумму
-            QMessageBox::information(this, "Поздравляем!",
-                                     QString("Вы ответили на %1 вопросов и забираете %2 рублей!")
-                                         .arg(questionsAnswered).arg(originalPrizeStr));
-        }
+        QMessageBox::information(this, "Игра окончена",
+                                 QString("Вы забрали деньги: %1 руб.").arg(prizeLevels[15 - questionsAnswered]));
     }
 
-    // ВАЖНО: Сначала отправляем сигнал с деньгами, потом закрываем окно
-    emit gameFinished(finalPrize);
+    // КЛАДЕМ ДЕНЬГИ В КОШЕЛЕК
+    Wallet::instance().addMoney(prizeToTake);
+
+    // Отправляем сигнал (для совместимости со старым кодом окна)
+    emit gameFinished(prizeToTake);
     this->close();
 }
 
@@ -433,51 +450,6 @@ void gamewindow::on_callBtn_clicked()
     callUsed = true;
     ui->callBtn->setEnabled(false);
     ui->callBtn->setStyleSheet("background-color: gray; color: darkgray;");
-}
-
-
-void gamewindow::loadQuestionsFromFile(const QString& filename)
-{
-    QFile file(filename);
-    if (!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::warning(this, "Ошибка",
-                             "Не удалось загрузить вопросы из файла");
-        return;
-    }
-
-    QByteArray data = file.readAll();
-    QJsonDocument doc = QJsonDocument::fromJson(data);
-
-    if (doc.isArray()) {
-        QJsonArray array = doc.array();
-        allQuestions.clear();
-
-        for (const QJsonValue& value : array) {
-            QJsonObject obj = value.toObject();
-
-            Question q;
-            q.text = obj["question"].toString();
-
-            QJsonArray answers = obj["answers"].toArray();
-            for (int i = 0; i < 4 && i < answers.size(); i++) {
-                q.answers[i] = answers[i].toString();
-            }
-
-            // ПРОСТО БЕРЕМ ЗНАЧЕНИЕ - должно быть 0, 1, 2 или 3
-            q.correctIndex = obj["correct"].toInt(0);
-
-            // ТОЛЬКО БАЗОВАЯ ПРОВЕРКА ДИАПАЗОНА
-            if (q.correctIndex < 0) q.correctIndex = 0;
-            if (q.correctIndex > 3) q.correctIndex = 3;
-
-            allQuestions.append(q);
-        }
-    }
-
-    if (allQuestions.isEmpty()) {
-        QMessageBox::warning(this, "Внимание",
-                             "Не удалось загрузить вопросы из файла. Используются тестовые вопросы.");
-    }
 }
 
 void gamewindow::startNewGame()

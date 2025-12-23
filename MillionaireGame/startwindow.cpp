@@ -2,6 +2,7 @@
 #include "gamewindow.h"
 #include "ui_startwindow.h"
 #include "QApplication"
+#include "wallet.h"
 
 #include <QMessageBox>
 
@@ -10,7 +11,8 @@ startwindow::startwindow(QWidget *parent)
     , ui(new Ui::startwindow)
 {
     ui->setupUi(this);
-    ui->balanceLbl->setText(QString::number(balance) + " ₽");
+
+    updateBalanceDisplay();
 }
 
 startwindow::~startwindow()
@@ -26,20 +28,23 @@ void startwindow::on_startBtn_clicked()
     game->show();
     this->hide();
 }
-// Этот метод сработает, когда игра пришлет сигнал
+
 void startwindow::onGameFinished(int money)
 {
-    balance += money;
-    ui->balanceLbl->setText(QString::number(balance) + " ₽");
-    this->show(); // Показываем главное меню обратно
+    updateBalanceDisplay();
+    this->show();
 }
 
-void startwindow::updateBalance(int money)
+void startwindow::updateBalanceDisplay()
 {
-    balance += money;
-    ui->balanceLbl->setText(QString::number(balance) + " ₽");
+    // Берем актуальную сумму из синглтона
+    int currentBalance = Wallet::instance().balance();
+    ui->balanceLbl->setText(QString::number(currentBalance) + " ₽");
 }
 
+void startwindow::updateBalance(int money) {
+    updateBalanceDisplay();
+}
 void startwindow::on_exitBtn_clicked()
 {
     QApplication::quit();

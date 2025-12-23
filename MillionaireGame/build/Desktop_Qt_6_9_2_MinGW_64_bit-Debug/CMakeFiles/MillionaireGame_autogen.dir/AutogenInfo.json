@@ -348,6 +348,12 @@
 	"HEADERS" : 
 	[
 		[
+			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/gameengine.h",
+			"MU",
+			"EWIEGA46WW/moc_gameengine.cpp",
+			null
+		],
+		[
 			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/gamewindow.h",
 			"MU",
 			"EWIEGA46WW/moc_gamewindow.cpp",
@@ -360,6 +366,12 @@
 			null
 		],
 		[
+			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/questionmanager.h",
+			"MU",
+			"EWIEGA46WW/moc_questionmanager.cpp",
+			null
+		],
+		[
 			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/startwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_startwindow.cpp",
@@ -369,6 +381,12 @@
 			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/styles.h",
 			"MU",
 			"EWIEGA46WW/moc_styles.cpp",
+			null
+		],
+		[
+			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/wallet.h",
+			"MU",
+			"EWIEGA46WW/moc_wallet.cpp",
 			null
 		]
 	],
@@ -443,11 +461,21 @@
 	"SOURCES" : 
 	[
 		[
+			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/gameengine.cpp",
+			"MU",
+			null
+		],
+		[
 			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/gamewindow.cpp",
 			"MU",
 			null
 		],
 		[ "D:/HobbyHorsing/aaKURSACH/MillionaireGame/main.cpp", "MU", null ],
+		[
+			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/questionmanager.cpp",
+			"MU",
+			null
+		],
 		[
 			"D:/HobbyHorsing/aaKURSACH/MillionaireGame/startwindow.cpp",
 			"MU",

@@ -20,6 +20,7 @@ private slots:
     void on_startBtn_clicked();
     void on_exitBtn_clicked();
     void updateBalance(int money);
+    void updateBalanceDisplay();
 
 public slots:
     void onGameFinished(int money);

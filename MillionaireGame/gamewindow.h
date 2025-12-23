@@ -7,6 +7,8 @@
 #include <QVector>
 #include <QList>
 #include <functional>
+#include "gameengine.h"
+#include "questionmanager.h"
 
 namespace Ui {
 class gamewindow;
@@ -33,6 +35,8 @@ private slots:
     void on_audienceBtn_clicked();
     void on_callBtn_clicked();
 
+    void updateUI();
+
     // Вспомогательные методы
     void animateBlink(QPushButton* button, int times, int interval,
                       std::function<void()> onFinished = nullptr);
@@ -45,6 +49,9 @@ private slots:
 
 private:
     Ui::gamewindow *ui;
+
+    GameEngine* engine;
+    QuestionManager* qManager;
 
     // Основные переменные игры
     int level = 1;
@@ -59,14 +66,6 @@ private:
     // Кнопки
     QList<QPushButton*> answerButtons;
     QList<QPushButton*> hintButtons;
-
-    // Система вопросов
-    class Question {
-    public:
-        QString text;
-        QString answers[4];
-        int correctIndex; // 0–3
-    };
 
     QVector<Question> allQuestions;   // все вопросы из файла
     QVector<Question> gameQuestions;  // вопросы для текущей игры
