@@ -1,16 +1,17 @@
-﻿using System.Runtime.InteropServices;
+using System.Numerics;
 
 namespace task33
 {
     public class Calculator
     {
-        public long GetLcm(long x, long y)
+        public BigInteger GetLcm(BigInteger x, BigInteger y)
         {
             if (x == 0 || y == 0) return 0;
-            return Math.Abs(x * y) / GetGcd(x, y);
+            BigInteger gcd = GetGcd(x, y);
+            return BigInteger.Abs((x / gcd) * y);
         }
 
-        private long GetGcd(long x, long y)
+        private BigInteger GetGcd(BigInteger x, BigInteger y)
         {
             while (y != 0)
             {
@@ -19,6 +20,5 @@ namespace task33
             }
             return x;
         }
-
     }
 }
