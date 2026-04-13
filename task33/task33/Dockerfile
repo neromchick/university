@@ -1,10 +1,9 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["task33/task33.csproj", "task33/"]
-RUN dotnet restore "task33/task33.csproj"
+COPY ["task33.csproj", "./"] 
+RUN dotnet restore "task33.csproj"
 COPY . .
-WORKDIR "/src/task33"
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish "task33.csproj" -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
